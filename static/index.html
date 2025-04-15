@@ -4,83 +4,128 @@
     <meta charset="UTF-8">
     <title>Форма выбора питомца</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+    </style>
 </head>
 <body>
 <main>
     <h1>Найди себе друга!</h1>
 
-    <!--Форму размещай тут-->
     <form action="/pets/orders" method="post">
-        <button type="submit">Отправить дикпик</button>
+        <div class="form-group">
+            <label>
+                Что предпочитаешь?<br>
+                <select name="petType">
+                    <option value="cat" selected>Котя</option>
+                    <option value="dog">Псина</option>
+                    <option value="tiger">Вай что за тигр</option>
+                </select>
+            </label>
+        </div>
 
-        <label>
-            Что предпочитаешь?
-            <select name="petType">
-                <option value="cat" selected>Котя</option>
-                <option value="dog">Псина</option>
-                <option value="tiger">Вай что за тигр</option>
-            </select>
-        </label>
+        <div class="form-group">
+            <label>
+                Кто ты воин?<br>
+                <select name="gender">
+                    <option value="boy" selected>Пацан</option>
+                    <option value="girl">Женщина</option>
+                    <option value="none">Вертолет</option>
+                </select>
+            </label>
+        </div>
 
-        <label>
-            Кто ты воин?
-            <select name="gender">
-                <option value="boy" selected>Пацан</option>
-                <option value="girl">Женщина</option>
-                <option value="none">Вертолет</option>
-            </select>
-        </label>
+        <div class="form-group">
+            <label>
+                Цвет глаз<br>
+                <input type="color" name="eyeColor" value="#ff0000">
+            </label>
+        </div>
 
-        <label>
-            Цвет глаз
-            <input type="color" name="eyeColor">
-        </label>
+        <div class="form-group">
+            <label>
+                Длина хвостика<br>
+                <input
+                        type="text"
+                        name="tailLength"
+                        placeholder="70"
+                        inputmode="numeric"
+                        value="70"
+                        pattern="[0-9]*"
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')
+                        && (this.value = Math.max(7, Math.min(120, this.value)))"
+                        onblur="this.value = Math.max(7, Math.min(120, this.value))"
+                        required
+                >
+            </label>
+        </div>
 
-        <label>
-            Длина хвостика
-            <input
-                    type="text"
-                    name="tailLength"
-                    inputmode="numeric"
-                    pattern="[0-9]*"
-                    oninput="this.value = this.value.replace(/[^0-9]/g, '')
-                 && (this.value = Math.max(7, Math.min(120, this.value)))"
-                    onblur="this.value = Math.max(7, Math.min(120, this.value))"
-                    required
-            >
-        </label>
+        <div class="form-group">
+            <label>
+                Имя древнего руса<br>
+                <input
+                        type="text"
+                        name="name"
+                        placeholder="Ярослав"
+                        value="Yaroslav"
+                        minlength="3"
+                        maxlength="50"
+                        oninput="this.value = this.value.trimStart()"
+                        onblur="this.value = this.value.trim()"
+                >
+            </label>
+        </div>
 
-        <label>
-            Твое имя древний рус
-            <input
-                    type="text"
-                    name="name"
-                    minlength="3"
-                    maxlength="50"
-                    oninput="this.value = this.value.trimStart()"
-                    onblur="this.value = this.value.trim()"
-            >
-        </label>
+        <div class="form-group">
+            <label>
+                Дата рождения<br>
+                <input type="date" name="dateOfBirth" value="1990-01-19">
+            </label>
+        </div>
 
-        <label>
-            Дата рождения
-            <input type="date" name="dateOfBirth">
-        </label>
+        <div class="form-group">
+            <label>
+                Адрес голубиной почты<br>
+                <input
+                        type="email"
+                        name="email"
+                        placeholder="почта@голубь.рф"
+                        value="email@example.com"
+                >
+            </label>
+        </div>
 
-        <label>
-            Адрес голубиной почты
-            <input type="email" name="email">
-        </label>
+        <div class="form-group">
+            <label>
+                Куда звякнуть?<br>
+                <input
+                        type="tel"
+                        name="phone"
+                        placeholder="+7 (999) 888-77-66"
+                        value="+88005553535"
+                        required
+                >
+            </label>
+        </div>
 
-        <label>
-            Куда звякнуть?
-            <input type="tel" name="phone" required>
-        </label>
+        <div class="form-group">
+            <label class="checkbox">
+                <input type="checkbox" name="rules" value="true" required>
+                <span>Все понял?</span>
+            </label>
+        </div>
 
-        <label>
-            Все понял?
-            <input type="checkbox" name="rules" value="true" required>
-        </label>
+        <div class="buttons">
+            <button type="submit">Отправить дикпик</button>
+            <button type="reset">Сбросить на дефолт</button>
+        </div>
     </form>
 </main>
 </body>
