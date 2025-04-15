@@ -10,7 +10,78 @@
     <h1>Найди себе друга!</h1>
 
     <!--Форму размещай тут-->
+    <form action="/pets/orders" method="post">
+        <button type="submit">Отправить дикпик</button>
 
+        <label>
+            Что предпочитаешь?
+            <select name="petType">
+                <option value="cat" selected>Котя</option>
+                <option value="dog">Псина</option>
+                <option value="tiger">Вай что за тигр</option>
+            </select>
+        </label>
+
+        <label>
+            Кто ты воин?
+            <select name="gender">
+                <option value="boy" selected>Пацан</option>
+                <option value="girl">Женщина</option>
+                <option value="none">Вертолет</option>
+            </select>
+        </label>
+
+        <label>
+            Цвет глаз
+            <input type="color" name="eyeColor">
+        </label>
+
+        <label>
+            Длина хвостика
+            <input
+                    type="text"
+                    name="tailLength"
+                    inputmode="numeric"
+                    pattern="[0-9]*"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')
+                 && (this.value = Math.max(7, Math.min(120, this.value)))"
+                    onblur="this.value = Math.max(7, Math.min(120, this.value))"
+                    required
+            >
+        </label>
+
+        <label>
+            Твое имя древний рус
+            <input
+                    type="text"
+                    name="name"
+                    minlength="3"
+                    maxlength="50"
+                    oninput="this.value = this.value.trimStart()"
+                    onblur="this.value = this.value.trim()"
+            >
+        </label>
+
+        <label>
+            Дата рождения
+            <input type="date" name="dateOfBirth">
+        </label>
+
+        <label>
+            Адрес голубиной почты
+            <input type="email" name="email">
+        </label>
+
+        <label>
+            Куда звякнуть?
+            <input type="tel" name="phone" required>
+        </label>
+
+        <label>
+            Все понял?
+            <input type="checkbox" name="rules" value="true" required>
+        </label>
+    </form>
 </main>
 </body>
 </html>
